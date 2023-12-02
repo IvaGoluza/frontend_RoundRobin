@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons/faRightFromBracket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Navbar() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";

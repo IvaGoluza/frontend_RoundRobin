@@ -1,6 +1,8 @@
 import React from "react";
 
-import { faTable, faRankingStar, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
+import { faRankingStar } from "@fortawesome/free-solid-svg-icons/faRankingStar";
+import { faTable } from "@fortawesome/free-solid-svg-icons/faTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { nanoid } from "nanoid";
 
