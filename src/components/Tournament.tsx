@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-import { useQueryClient } from "react-query";
+import React from "react";
 
 export interface UserProps {
   id: number;

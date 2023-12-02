@@ -2,12 +2,11 @@
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite && postcss src/index.css -o src/tailwind.css",
     "build": "npm install && tsc && vite build",
     "preview": "vite preview --host",
-    "start": "node src/App.tsx"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.1",

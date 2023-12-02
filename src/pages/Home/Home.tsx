@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import { Field, Form, Formik, FormikHelpers } from "formik";
 import { nanoid } from "nanoid";
-import toast from "react-hot-toast";
 import { useQuery, useQueryClient } from "react-query";
 
+import CreateTournamentForm from "../../components/CreateTournamentForm";
 import Tournament, { TournamentProps } from "../../components/Tournament";
 import TournamentInfo from "../../components/TournamentInfo";
-import ValidationSchema from "../../components/ValidationSchema";
 
 export default function Home() {
   const queryClient = useQueryClient();
@@ -19,18 +17,6 @@ export default function Home() {
   const [tables, setTables] = useState<boolean>(false);
   const [tournamentInfo, setTournamentInfo] = useState<TournamentProps | null>(null);
   const { user, error } = useAuth0();
-  const ERROR = "w-96 rounded-lg mt-1 border-2 border-rose-500 p-2 text-start";
-  type formTypes = {
-    title: string;
-    teams: string;
-    scoreSystem: string;
-  };
-  const initialValues: formTypes = {
-    title: "",
-    teams: "",
-    scoreSystem: "",
-  };
-
   type loggedInUserType = {
     id: number;
     userName: string;
@@ -73,41 +59,15 @@ export default function Home() {
     }
   }, [currentUser, queryClient]);
 
-  const onSubmit = async (values: formTypes, formikHelpers: FormikHelpers<formTypes>) => {
-    const data = {
-      tourName: values.title,
-      teams: values.teams,
-      scoreSystem: values.scoreSystem,
-      userId: currentUser?.id,
-    };
-    axios({
-      method: "post",
-      url: "https://roundrobinbackend.onrender.com/api/tournaments",
-      data: data,
-    })
-      .then((res) => {
-        queryClient.refetchQueries(["tournaments"]);
-        toast.success("Stvorili ste novo natjecanje. ", {
-          position: "bottom-center",
-          duration: 3000,
-          className: "scale-125",
-        });
-        console.log(res);
-        formikHelpers.resetForm();
-        formikHelpers.setErrors({});
-      })
-      .catch((err) => console.log(err));
-  };
-
   if (error) {
     return <div>Oops... {error.message}</div>;
   } else
     return (
       <>
-        <div className={"flex h-screen w-full"}>
+        <div className={"flex h-screen w-full max-lg:h-auto"}>
           <div
             className={
-              "m-auto grid h-3/4 w-full grid-cols-3 grid-rows-1 justify-center pl-40 pr-96 max-lg:my-96 max-lg:flex max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:px-4 max-lg:pt-40"
+              "m-auto grid h-3/4 w-full grid-cols-3 grid-rows-1 justify-center pl-40 pr-96 max-lg:my-32 max-lg:flex max-lg:min-h-full max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:px-4"
             }
           >
             <div className={"col-span-1 flex h-full flex-col items-start justify-start max-lg:items-center"}>
@@ -171,85 +131,7 @@ export default function Home() {
                 link={tournamentInfo.link}
               />
             )}
-            {form && (
-              <div className={"create-tournament col-span-2"}>
-                <Formik initialValues={initialValues} validationSchema={ValidationSchema} onSubmit={onSubmit}>
-                  {({ errors, touched, isSubmitting }) => (
-                    <Form className="flex min-h-max w-fit flex-col items-center justify-center rounded-lg px-8 py-10 shadow-md max-lg:mb-20 max-lg:h-auto 2xl:ml-40">
-                      <div className="my-4 flex max-w-md flex-col items-start justify-center">
-                        <label htmlFor="title" className="text-xl font-bold text-indigo-400">
-                          Naziv natjecanja
-                        </label>
-                        <div className="relative w-2/3 rounded-md">
-                          <Field
-                            type="text"
-                            name="title"
-                            placeholder="Upišite naziv natjecanja"
-                            className={
-                              touched && touched.title && errors && errors.title
-                                ? ERROR
-                                : "mt-1 w-96 rounded-full border p-2 text-start"
-                            }
-                          />
-                          {touched && touched.title && errors && errors.title && (
-                            <p className="pl-4 text-sm text-rose-500">{errors.title}</p>
-                          )}
-                        </div>
-                      </div>
-                      <div className="my-4 flex max-w-md flex-col items-start justify-center">
-                        <label htmlFor="description" className="text-xl font-bold text-indigo-400">
-                          Popis natjecatelja{" "}
-                          <span className={"whitespace-nowrap text-sm font-normal text-indigo-400"}>
-                            (odvojeni novim redom ili znakom ;)
-                          </span>
-                        </label>
-                        <Field
-                          as="textarea"
-                          name="teams"
-                          className={
-                            touched.teams && errors.teams
-                              ? "mt-1 h-40 w-96 rounded-lg border-2 border-rose-500 p-2 text-start"
-                              : "mt-1 h-40 w-96 rounded-lg border p-2 text-start"
-                          }
-                          placeholder="John;Doe;Jane;Mary"
-                        ></Field>
-                        {touched && touched.teams && errors && errors.teams && (
-                          <p className="pl-4 text-sm text-rose-500">{errors.teams}</p>
-                        )}
-                      </div>
-                      <div className="my-4 flex max-w-md flex-col items-start justify-center">
-                        <label htmlFor="title" className="text-xl font-bold text-indigo-400">
-                          Sustav bodovanja{" "}
-                          <span className={"text-sm font-normal text-indigo-400"}>(format: pobjeda/remi/prolaz)</span>
-                        </label>
-                        <div className="relative w-2/3 rounded-md">
-                          <Field
-                            type="text"
-                            name="scoreSystem"
-                            placeholder="2/1/0"
-                            className={
-                              touched.scoreSystem && errors.scoreSystem
-                                ? ERROR
-                                : "mt-1 w-96 rounded-lg border p-2 text-start"
-                            }
-                          />
-                          {touched && touched.scoreSystem && errors && errors.scoreSystem && (
-                            <p className="pl-4 text-sm text-rose-500">{errors.scoreSystem}</p>
-                          )}
-                        </div>
-                      </div>
-                      <button
-                        disabled={isSubmitting}
-                        type={"submit"}
-                        className="m-4 mt-16 rounded-3xl bg-cyan-400 px-7 py-2 font-bold text-white hover:bg-cyan-300"
-                      >
-                        KREIRAJ NATJECANJE
-                      </button>
-                    </Form>
-                  )}
-                </Formik>
-              </div>
-            )}
+            {form && currentUser && <CreateTournamentForm id={currentUser.id} />}
           </div>
         </div>
       </>

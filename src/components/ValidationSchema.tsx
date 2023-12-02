@@ -3,7 +3,7 @@ import * as Yup from "yup";
 const ValidationSchema = Yup.object().shape({
   title: Yup.string()
     .required("Naziv oglasa je obavezan")
-    .matches(/^[a-zA-ZčćžšđČĆŽŠĐ\s]+$/, "Naziv oglasa mora sadržavati samo slova, brojeve i razmake"),
+    .matches(/^[a-zA-ZčćžšđČĆŽŠĐ\s]+$/, "Naziv oglasa može sadržavati samo slova i razmake"),
 
   teams: Yup.string()
     .required("Imena natjecatelja su obavezna")

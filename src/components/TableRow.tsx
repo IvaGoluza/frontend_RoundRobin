@@ -24,6 +24,7 @@ export default function TableRow({ num, match, tourId, setTournamentInfo }: Tabl
   const queryClient = useQueryClient();
   const [result, setResult] = useState<string>("");
   const [showIcon, setShowIcon] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const updateData = async (data: UpdateMatchResultType) => {
     const response = await axios.put("https://roundrobinbackend.onrender.com/api/match", data);
@@ -34,15 +35,19 @@ export default function TableRow({ num, match, tourId, setTournamentInfo }: Tabl
   const updateMutation = useMutation(updateData);
 
   const handleResultUpdate = async () => {
+    const regex = /^\d+:\d+$/;
+    if (!regex.test(result)) {
+      setError(true);
+      setResult("[format] broj:broj");
+      return;
+    }
+    setError(false);
     const data = {
       matchId: match.id,
       tourId: tourId,
       score: result,
     };
-    console.log("hi");
-    console.log(data);
     try {
-      console.log(data);
       await updateMutation
         .mutateAsync(data)
         .then(() => queryClient.refetchQueries(["tournaments"]))
@@ -61,13 +66,14 @@ export default function TableRow({ num, match, tourId, setTournamentInfo }: Tabl
       <div className={"col-span-2 border border-slate-100 text-slate-400"}>{match.team2.teamName}</div>
       <div className={"col-span-5 flex flex-row items-center justify-between border border-slate-100"}>
         <input
-          className={"w-full px-2 text-center"}
+          className={error ? "w-full border border-red-700 px-2 text-center text-red-700" : "w-full px-2 text-center"}
           placeholder={match.result ? match.result : "Unesite rezultat"}
           value={result}
           onChange={(e) => {
             setResult(e.target.value);
             setShowIcon(e.target.value.trim() !== "");
           }}
+          onClick={() => setResult("")}
         />
         {showIcon && <FontAwesomeIcon icon={faPenToSquare} className="mx-2" onClick={handleResultUpdate} />}
       </div>
