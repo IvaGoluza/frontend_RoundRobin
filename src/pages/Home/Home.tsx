@@ -67,7 +67,7 @@ export default function Home() {
         <div className={"flex h-screen w-full max-lg:h-auto"}>
           <div
             className={
-              "m-auto ml-24 grid h-3/4 w-full grid-cols-3 grid-rows-1 justify-center pl-0 pr-10 max-lg:my-32 max-lg:flex max-lg:min-h-full max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:px-4"
+              "m-auto ml-24 grid h-3/4 w-full grid-cols-3 grid-rows-1 justify-center pl-0 pr-10 max-lg:my-32 max-lg:ml-0 max-lg:flex max-lg:min-h-full max-lg:flex-col max-lg:items-center max-lg:justify-center max-lg:px-4"
             }
           >
             <div className={"col-span-1 flex h-full flex-col items-start justify-start max-lg:items-center"}>
