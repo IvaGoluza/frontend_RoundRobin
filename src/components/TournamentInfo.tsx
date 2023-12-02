@@ -61,7 +61,7 @@ export default function TournamentInfo({ id, rounds, link, setTournamentInfo }: 
             <ScoresTable rows={teamArray} />
           </div>
         </div>
-        <div className={"absolute ml-40 flex flex-row pb-40 max-lg:m-auto max-lg:ml-0 max-lg:p-0"}>
+        <div className={"absolute ml-28 flex flex-row pb-40 max-lg:m-auto max-lg:ml-0 max-lg:p-0"}>
           <FontAwesomeIcon icon={faLink} className="fa-xl mr-2 text-blue-400" />
           <a
             href={link}
