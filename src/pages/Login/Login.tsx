@@ -9,7 +9,7 @@ export default function Login() {
     <>
       <div className={"flex h-screen w-full"}>
         <div className={"m-auto flex flex-row  items-center justify-center max-lg:flex-col"}>
-          <img src="../../images/roundRobin.jpg" alt="roundRobinHome" className="mb-8 mr-3 h-2/5 w-2/6" />
+          <img src="/roundRobin.jpg" alt="roundRobinHome" className="mb-8 mr-3 h-2/5 w-2/6" />
           <div className={"mb-8 flex h-96 flex-col items-start justify-between max-lg:items-center"}>
             <div className={"h-full max-lg:text-center"}>
               <h1 className={"mb-4 text-8xl font-black"}>Round Robin</h1>

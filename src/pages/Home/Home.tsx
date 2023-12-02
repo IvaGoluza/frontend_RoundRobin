@@ -113,11 +113,7 @@ export default function Home() {
               </div>
             </div>
             {picture && (
-              <img
-                src="../../images/roundRobin.jpg"
-                alt="roundRobinHome"
-                className="col-span-2 mx-28 ml-24 mt-20 h-3/5"
-              />
+              <img src="/roundRobin.jpg" alt="roundRobinHome" className="col-span-2 mx-28 ml-24 mt-20 h-3/5" />
             )}
             {tables && tournamentInfo && (
               <TournamentInfo
