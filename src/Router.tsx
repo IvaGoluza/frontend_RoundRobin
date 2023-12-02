@@ -10,7 +10,6 @@ import TournamentDetails from "./pages/TournamentDetails";
 
 export default function Router() {
   const { user } = useAuth0();
-  console.log(user);
   return (
     <Routes>
       <Route path="/" element={<ApplicationFrame />}>

@@ -24,7 +24,6 @@ export default function Home() {
   };
 
   const fetchData = async () => {
-    console.log(currentUser);
     const response = await axios.get("https://roundrobinbackend.onrender.com/api/tournaments/" + currentUser?.id);
     return response.data;
   };
@@ -44,7 +43,6 @@ export default function Home() {
         })
         .then((res) => res.data)
         .then((data: loggedInUserType) => {
-          console.log(user);
           setCurrentUser(data);
         })
         .catch((err) => {

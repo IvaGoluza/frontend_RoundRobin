@@ -45,7 +45,6 @@ export default function CreateTournamentForm({ id }: CreateTournamentFormProps) 
           duration: 3000,
           className: "scale-125",
         });
-        console.log(res);
         formikHelpers.resetForm();
         formikHelpers.setErrors({});
       })

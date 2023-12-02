@@ -22,7 +22,6 @@ interface TournamentDetails {
 export default function TournamentDetails() {
   const [data, setData] = useState<TournamentDetails | null>(null);
   const { uuid } = useParams();
-  console.log(uuid);
 
   useEffect(() => {
     const getData = async () => {
