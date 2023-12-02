@@ -14,7 +14,7 @@ export default function App() {
     <Auth0Provider
       domain="dev-8vpeifn5zjr10rrk.us.auth0.com"
       clientId="KeyCLgsg5zocbeC4ggP3qyHBLHJBv7E9"
-      authorizationParams={{ redirect_uri: "http://localhost:3000/home" }}
+      authorizationParams={{ redirect_uri: "https://frontend-roundrobin.vercel.app/home" }}
     >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
