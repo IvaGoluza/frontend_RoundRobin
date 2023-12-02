@@ -1,14 +1,14 @@
 import React from "react";
 
-import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
-import { faRankingStar } from "@fortawesome/free-solid-svg-icons/faRankingStar";
-import { faTable } from "@fortawesome/free-solid-svg-icons/faTable";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { nanoid } from "nanoid";
 
 import ScoresTable from "./ScoresTable";
 import Table from "./Table";
 import { MatchProps, RoundProps, TeamProps, TournamentProps } from "./Tournament";
+import { faLink } from "../../node_modules/@fortawesome/free-solid-svg-icons/faLink";
+import { faRankingStar } from "../../node_modules/@fortawesome/free-solid-svg-icons/faRankingStar";
+import { faTable } from "../../node_modules/@fortawesome/free-solid-svg-icons/faTable";
+import { FontAwesomeIcon } from "../../node_modules/@fortawesome/react-fontawesome";
 
 export default function TournamentInfo({ id, rounds, link, setTournamentInfo }: TournamentProps) {
   const teamSet = new Set<TeamProps>();

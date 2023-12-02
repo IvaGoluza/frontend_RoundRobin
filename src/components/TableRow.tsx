@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 
 import { MatchProps, TournamentProps } from "./Tournament";
+import { faPenToSquare } from "../../node_modules/@fortawesome/free-solid-svg-icons/faPenToSquare";
+import { FontAwesomeIcon } from "../../node_modules/@fortawesome/react-fontawesome";
 
 export interface TableRowProps {
   num: number;

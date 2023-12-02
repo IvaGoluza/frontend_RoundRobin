@@ -1,8 +1,9 @@
 import React from "react";
 
 import { useAuth0 } from "@auth0/auth0-react";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons/faRightFromBracket";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faRightFromBracket } from "../../node_modules/@fortawesome/free-solid-svg-icons/faRightFromBracket";
+import { FontAwesomeIcon } from "../../node_modules/@fortawesome/react-fontawesome";
 
 export default function Navbar() {
   const { isAuthenticated, logout } = useAuth0();
