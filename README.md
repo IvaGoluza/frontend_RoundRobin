@@ -9,7 +9,7 @@ This is a web application built using Vite, TypeScript, Tailwind CSS. It serves 
 - **TypeScript**: The entire frontend is developed using TypeScript, enhancing code maintainability.
 - **Tailwind CSS**: The project uses Tailwind CSS as the primary CSS framework. [Tailwind CSS documentation](https://tailwindcss.com/docs)
 ### Deployment and Development Environment
-- **Vite:** The frontend is developed using Vite, a fast build tool that. [Vite documentation](https://vitejs.dev/)
+- **Vite:** The frontend is developed using Vite, a fast build tool. [Vite documentation](https://vitejs.dev/)
 - **Vercel Deployment:** The frontend application is deployed on Vercel. The deployed application can be accessed at https://frontend-roundrobin.vercel.app/
   <br/>*Please Note*: The frontend application is linked to a backend hosted on Render. In case of any delay in the initial loading, allow a few minutes for the backend services to come online for full functionality.
 ### Code Quality and Development Tools
